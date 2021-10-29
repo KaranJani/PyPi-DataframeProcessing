@@ -36,7 +36,7 @@ To install run below commands
         
         
 ### standard_scaling
-```varriable.standard_scaling(dataframe, central_tendency='mean')```   
+```varriable.standard_scaling(dataframe)```   
 
         standard_scaling method standardize all the values by removing the mean and scaling to unit variance
 
