@@ -20,17 +20,17 @@ class Alter:
                 if central_tendency.lower() == 'mean':
                     for i in dataframe._get_numeric_data().columns:
                         dataframe[i].fillna(dataframe[i].mean(), inplace=True)
-                    return dataframe
+                    return pd.DataFrame(dataframe)
 
                 if central_tendency.lower() == 'mode':
                     for i in dataframe._get_numeric_data().columns:
                         dataframe[i].fillna(dataframe[i].mode(), inplace=True)
-                    return dataframe
+                    return pd.DataFrame(dataframe)
 
                 if central_tendency.lower() == 'median':
                     for i in dataframe._get_numeric_data().columns:
                         dataframe[i].fillna(dataframe[i].median(), inplace=True)
-                    return dataframe
+                    return pd.DataFrame(dataframe)
             else:
                 print(f'Type should be pd.Dataframe and not {type(dataframe)}')
 
@@ -51,7 +51,7 @@ class Alter:
                 for i in dataframe.isna().sum():
                     check += i
                 if check == 0:
-                    return StandardScaler().fit_transform(dataframe._get_numeric_data())
+                    return pd.DataFrame(StandardScaler().fit_transform(dataframe._get_numeric_data()),columns=[i for i in dataframe._get_numeric_data().columns])
                 else:
                     print('Dataframe contains NaN values')
             elif type(dataframe) == np.ndarray:
